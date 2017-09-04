@@ -14,7 +14,13 @@
                 padding-right: 20px;
                 padding-bottom: 20px;
                 font-family:"Menlo-Regular";
-                font-size:0.9em;
+            }
+            @media screen 
+			and (min-device-width : 375px) 
+			and (max-device-width : 667px) {
+				div {
+					font-size: 150%;				
+				}
             }
         </style>
   
@@ -24,7 +30,7 @@
     <div class="wrapper">
         <div class="pure-g">
 {% for item in meal_list %}
-            <div class="pure-u-sm-1-5 pure-u-1-5">
+            <div class="pure-u-1 pure-u-md-1 pure-u-lg-1-5">
                 {{item.day}}: {{item.meal}}
             </div>
 {% endfor %}
