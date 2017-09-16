@@ -1,6 +1,6 @@
 create table meals (
     id int auto_increment,
-    name VARCHAR(255) NOT NULL,
+    name VARCHAR(512) NOT NULL,
     protein VARCHAR(255) NOT NULL,
     season VARCHAR(255) NOT NULL,
     PRIMARY KEY ('id')
