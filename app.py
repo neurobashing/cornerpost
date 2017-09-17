@@ -3,26 +3,40 @@
 import sqlite3
 import random
 from flask import Flask, render_template
+from flask_sqlalchemy import SQLAlchemy
+from flask_admin import Admin
+from flask_admin.contrib.sqla import ModelView
+
 app = Flask(__name__)
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///food.db'
+app.config['SECRET_KEY'] = 'dklfjsdlkfjslkdfjslkdfjslkdjfslkdjflskdjflksdjf'
+db = SQLAlchemy(app)
+
+class Meals(db.Model):
+    __tablename__ = 'meals'
+    id = db.Column(db.Integer, primary_key=True) 
+    name = db.Column(db.String(512), unique=True)
+    protein = db.Column(db.String(256))
+    season = db.Column(db.String(45))
+
+
+admin = Admin(app, name='meals', template_mode='bootstrap3')
+admin.add_view(ModelView(Meals, db.session))
+
+
 
 @app.route('/')
 def show():
-	conn = sqlite3.connect('food.db')
+    list_of_items = Meals.query.all()
 
-	c = conn.cursor()  # our cursor
+    days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday']
 
-	results = c.execute('select name from meals').fetchall()
-	list_of_items = [name[0] for name in results]
-
-	days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday']
-
-	meals = []
-	for item in range(5):
-		meal_id = random.randint(0,len(list_of_items)-1)
-		meals.append({'day': days[item], 'meal': list_of_items[meal_id]})
-		del list_of_items[meal_id]
-	conn.close()
-	return render_template('index.html', meal_list=meals)
+    meals = []
+    for item in range(5):
+        meal_id = random.randint(0,len(list_of_items)-1)
+        meals.append({'day': days[item], 'meal': list_of_items[meal_id].name})
+        del list_of_items[meal_id]
+    return render_template('index.html', meal_list=meals)
 
 if __name__ == '__main__':
     app.run()
