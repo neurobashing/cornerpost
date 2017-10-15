@@ -1,0 +1,17 @@
+#!/usr/bin/env python3
+
+from fabric.operations import put, remote
+from fabric.api import env
+
+# define our shit
+env.hosts = ['cornerpost.in']
+
+# deploy our shit
+put('app.py')
+
+# restart our shit
+remote('bounce.sh')
+
+# re-load our shit
+
+# other shit

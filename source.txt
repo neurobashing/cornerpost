@@ -1,4 +1,4 @@
-tacos
+Tacos
 Pasta Fresca 
 Risotto 
 Tortellini salad (summer)
@@ -7,7 +7,6 @@ Chicken tender salad
 Cobb salad
 Shrimp Cobb salad
 Hamburgers
-Meatloaf 
 Mini meatloaf
 Pork tenderloin 
 Steak
@@ -18,3 +17,18 @@ Fake chicken parm
 Shrimp tacos with guacamole and red cabbage
 Siracha turkey burgers
 BBQ 
+Pizza
+BBQ Nachos
+Meatloaf
+Chicken Bruschetta Bake
+Chicken Salad
+Pork Tenderloin and Spicy Sweet Potatoes
+Cubans
+Chicken Bruschetta Sandwiches
+Chili
+Vegetable Soup
+Chicken Dumpling Soup
+White Bean and Sausage Soup
+Tomato Soup w/ Grilled Cheese
+Fried Rice
+Beef Stew
