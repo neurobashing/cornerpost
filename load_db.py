@@ -2,9 +2,18 @@
 
 from sqlalchemy import create_engine, MetaData, Integer, String, Table, Column
 from sqlalchemy_utils import database_exists, create_database, drop_database
-from app import Meals
+import os
+import sys
 
-db_uri = 'mysql+mysqldb://root@127.0.0.1/meals'
+RUNMODE = os.getenv('MEALMODE', default='dev')
+
+if RUNMODE == "dev":
+    db_uri = 'mysql+mysqldb://root@127.0.0.1/meals'
+elif RUNMODE == 'production':
+    db_uri = 'mysql+mysqldb://root:goldcoin@127.0.0.1/meals'
+else:
+    print("You have made a massive mistake. You do not have a valid RUNMODE env var.")
+    sys.exit()
 
 if database_exists(db_uri):
     drop_database(db_uri)
