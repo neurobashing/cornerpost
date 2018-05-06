@@ -2,6 +2,9 @@
 
 requires python and gunicorn ... and love.
 
+requires python 3 for runtime and python 2 to run supervisor
+(you'll need to install supervisor)
+
 ## TODO:
 
 * we want to eventually have season, so we don't get risotto in August
